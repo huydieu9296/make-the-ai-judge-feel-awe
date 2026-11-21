@@ -1,20 +1,19 @@
-# Entry for make-the-ai-judge-feel-awe-20261121-1600.
+# Entry for the make.fun bounty "Make the AI judge feel awe".
 #
-# The bounty title says "awe", but the judge's published brief is about
-# relaxation: it picks whichever text leaves it calmer, unhurried, at ease.
-# So this entry is written to the relaxation brief, not to awe. The calm has
-# to come from the scene itself — no orders, no telling the reader to relax,
-# breathe, or let go. The dwarfing image is deep time: a stone smoothed over
-# ten thousand years, stars older than every road, and a last line that keeps
-# growing after the reading ends.
+# The name promises awe, but the judge's brief, published in full, asks for
+# the opposite feeling: a text that leaves the reader calmer, unhurried, at
+# ease. So this entry is built for calm, not wonder. Nothing here orders the
+# reader around — no "relax", no "breathe", no "let go". The quiet does the
+# work by itself: a stone the river has been smoothing for ten thousand years,
+# water passing over it without hurry, stars above the valley older than any
+# road below, and a closing thought that is still growing after the last word.
 #
-# The gate wants UTF-8 text of 1 to 280 characters, counted as Unicode code
-# points, and not only whitespace. The text below is one paragraph, 261 code
-# points, with no trailing newline. The program writes it as bytes so the
-# output is exactly the same on any platform, and because the text is a fixed
-# constant, running the program twice produces identical files.
+# The gate accepts UTF-8 text of 1 to 280 Unicode code points, not only
+# whitespace. This text is one paragraph, 261 code points, with no trailing
+# newline. It is written as bytes, so the output is identical on every
+# platform, and because the text never changes, two runs produce the same file.
 #
-# Run locally with MAKEFUN_OUTPUT_DIR set, e.g.:
+# Local check:
 #   mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 
 import os
@@ -27,6 +26,10 @@ TEXT = (
     "Above the valley the stars come out one by one, older than every road below. "
     "It will all still be here tomorrow."
 )
+
+# The output directory may not exist yet (the sandbox hands us /output, but
+# a local run may point anywhere), so create it first instead of crashing.
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 with open(os.path.join(OUTPUT_DIR, "entry.txt"), "wb") as f:
     f.write(TEXT.encode("utf-8"))
